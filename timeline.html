@@ -1,0 +1,752 @@
+<html>
+  <head>
+    <title>Beyond the Reels</title>
+    <style>
+
+    </style>
+    <link rel = "icon" href = "images/clapperboard.png" type = "image/x-icon">
+  </head>
+  <body>
+    <html>
+  <head>
+    <title> Meme gallery</title>
+    <style>
+       *{margin: 0;padding: 0;box-sizing: border-box;}
+body {
+  background: #ddd;
+}
+
+body{
+    background-image: linear-gradient(to bottom right,#000000, black, #346e7d);
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 1px;
+  }
+  ::selection{
+    color: #c2e7f0;
+    background: #083d4a;
+  }
+  a:link{
+    text-decoration: none;
+  }
+  .navbar{
+    display: flex;
+    padding: 30px;
+  }
+  .logo img{
+    height: 200px;
+    width: 200px;;
+    padding: 10px;
+  }
+  /*.navbar ul{
+    margin-top: 30px;
+    display: flex;
+    margin-right: 20px;
+    list-style: none;
+  }*/
+  nav{
+    flex: 1;
+    text-align: right;
+  }
+  nav ul li{
+    display: inline-block;
+    margin-top: 50px;
+  }
+  .navbar ul a{
+    color: #c2e7f0;
+    font-size: 20px;
+    padding: 10px 20px;
+  }
+  .navbar ul a:hover{
+    color: white;
+  }
+
+  .contain .heading{
+    width: 50%;
+    padding-bottom: 50px;
+    margin-left: 350px;
+   
+}
+.contain .heading h3{
+    font-size: 3em;
+    font-weight: bolder;
+    border-bottom: 3px solid #c2e7f0;
+    color: #c2e7f0;
+    font-family: 'Times New Roman', Times, serif;
+    padding-bottom: 10px;
+}
+.contain .heading h3 span{
+    font-weight: 100;
+}
+.contain .write{
+  margin-left: 250px;
+}
+
+@media only screen and (max-width: 643px)
+  {
+    .contain .heading{
+        width: 100%;
+    }
+    .contain .heading h3{
+        font-size: 1em;
+    }
+  }
+
+
+  /*footer*/
+  
+  .footer{
+    background-color: black;
+    padding: 20px;
+  }
+  .footer ul{
+    text-align: center;
+    margin-top: 10px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #888;
+    margin-bottom: 20px;
+  }
+  .footer ul li{
+    display: inline-block;
+  }
+  .footer ul li a{
+    padding: 10px 20px;
+    color: #c2e7f0;
+    border-radius: 5px;
+  }
+  .footer ul li a:hover{
+    color: white;
+  }
+  .footer p{
+    color: #c2e7f0;
+    text-align: center;
+    font-size: 14px;
+  }
+
+#container
+{
+height: 600px;
+width: 100%;
+background-color: #ddd;
+overflow: hidden;
+position: relative;
+overflow-x: scroll;
+  margin-top: 30px;
+  display: inline-block;
+}
+
+#thumbs
+{
+background-color: #ddd;
+position: absolute;
+top: 0px;
+left: 0px;
+height: 100%;
+width: auto;
+overflow: hidden;
+white-space: nowrap;
+padding: 30px 100px;
+}
+
+.history-block {
+  height: 100%;
+  width: 300px;
+  background-color: #cdcdcd;
+  margin: 0 -2px;
+  border-right: 1px solid #fff;
+  display: inline-block;
+  font-family: 'roboto condensed', sans-serif;
+  font-size:60px;
+  font-weight: 100;
+  color: #FFF;
+  cursor: pointer;
+  box-shadow: 2px 5px 20px rgba(0,0,0,0.8);
+  transition: width 0.2s;
+}
+
+.history-block:last-of-type {
+  border-right: none;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  transition: background-color.5s;
+  background: rgba(0,0,0,0.8);
+}
+
+.cover:hover {
+  width: 100%;
+  height: 100%;
+  transition: background-color .5s;
+  background: rgba(0,0,0,0.8);
+}
+
+.year {
+  position: absolute;
+    top: 0px;
+    font-size: 30px;
+  font-weight:500;
+    margin: 40px 30px;
+}
+
+.title {
+  position: absolute;
+  display: block;
+  width: 260px;
+    top: 130px;
+    font-size: 25px;
+    margin: 30px;
+  white-space: normal;
+  transition: width 0.2s;
+}
+
+.timeline {
+  display:none;
+  position: absolute;
+  bottom: 80px;
+    font-size: 30px;
+    margin: 20px;
+  transition: display 0.8s;
+}
+
+.timeline ul {
+  margin: 0;
+padding: 0;
+list-style-type: none;
+text-align: center;
+}
+
+.timeline ul li {
+  display: inline;
+  font-size: 30px;
+  font-weight: 100;
+  padding: 0px 5px;
+}
+
+.timeline ul li {
+  display: inline;
+  font-size: 30px;
+  font-weight: 100;
+  padding: 0px 5px;
+}
+
+.timeline ul li:before {
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  color: rgba(255,255,255,0.5);
+  content: '\f10c';
+  position: absolute;
+  top: 30px;
+  margin-left:10px;
+  transition: all 0.5s;
+}
+
+.timeline ul li:after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  margin-left:-10px;
+  width: 36px;
+  height:2px;
+  border: 1px solid rgba(255,255,255,0.5);
+  transition: all 0.5s;
+}
+
+.timelineYear, .timelineYear:hover {
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.8s;
+}
+
+.timeline ul li:hover:before {
+  content: '\f111';
+  color: #ffffff;
+  font-size: 18px;
+  transition: all 0.5s;
+  top: 29px;
+  margin-left:9px
+}
+
+.timeline ul li:hover:after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  margin-left:-10px;
+  width: 36px;
+  height:2px;
+  border: 1px solid #fff;
+  transition: all 0.5s;
+}
+
+.timeline ul li:hover .timelineYear {
+  position: static;
+  top:-10px;
+}
+
+.bg-66 {
+  background: url(download.jpg);
+  background-size:cover;
+}
+
+.bg-76 {
+  background: url(bg2.jpg);
+  background-size:cover;
+}
+
+.bg-86 {
+  background: url('https://upload.wikimedia.org/wikipedia/commons/e/e8/Power_Plant_(Tianjin,_China).jpg');
+  background-size:cover;
+}
+
+.bg-96 {
+  background: url(http://www.oxfordbusinessgroup.com/sites/default/files/styles/chapter_header__710x233_/public/chapter_headers/ind1_2.png?itok=uxI_081i&c=af7608f5f35cf219c326e9b6e6a7d34c);
+  background-size:cover;
+}
+
+.bg-06 {
+  background: url(bg3.jpg);
+  background-size:cover;
+}
+
+.bg-16 {
+  background: url(bg14.jpg);
+  background-size:cover;
+}
+.bg-21 {
+  background: url(bg4.jpg);
+  background-size:cover;
+}
+.bg-22 {
+  background: url(bg5.jpg);
+  background-size:cover;
+}
+.bg-23 {
+  background: url(bg6.jpg);
+  background-size:cover;
+}
+.bg-24 {
+  background: url(bg7.jpg);
+  background-size:cover;
+}
+.bg-25 {
+  background: url(bg8.jpg);
+  background-size:cover;
+}
+.bg-26 {
+  background: url(bg9.jpg);
+  background-size:cover;
+}
+.bg-27 {
+  background: url(bg10.jpg);
+  background-size:cover;
+}
+.bg-28 {
+  background: url(bg11.jpg);
+  background-size:cover;
+}
+.bg-29 {
+  background: url(bg12.jpg);
+  background-size:cover;
+}
+.bg-30 {
+  background: url(bg13.jpg);
+  background-size:cover;
+}
+    </style>
+  </head>
+  <body>
+
+    <html lang="en">
+    <head>
+        <meta name="veiwport" content="width-device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <title>trial</title>
+        <link rel = "icon" href = "images/clapperboard.png" type = "image/x-icon">
+        <link rel = "icon" href = "images/clapperboard.png" type = "image/x-icon">
+        <link href="style.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Shrikhand&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!--header-->
+                <div class="navbar">
+
+                    <div class="logo">
+                        <img src="hackathon logo.gif">
+                    </div>
+                        <nav><ul>
+                            <li><a href="index.html">HOME</a></li>
+                            <li><a href="images.html">GALLERY</a></li>
+                            <li><a href="music.html">MUSIC</a></li>
+                            <li><a href="memes.html">MEMES</a></li>
+                            <li><a href="timeline.html">QUOTES</a></li>
+                            <!-- <li><a href="contactform.html">CONTACTS</a></li> -->
+                            <li><a href="about.html">ABOUT</a></li>
+                            <li><a href="http://localhost/php/index.php">ACCOUNT</a></li>
+                        </ul></nav>
+                </div>
+
+                <div class="contain">
+                  <div class="heading">
+                      <h3><div class="write">fun- <span>tastic</span></div></h3>
+                  </div>
+
+    <div id="container">
+      <div id="thumbs">
+      <div class="history-block bg-66">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">The greatest glory in living lies not in never falling, but in rising every time we fall. <br><br>-Nelson Mandela</div>
+        <div class="timeline">
+          <ul>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="history-block bg-76">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">The way to get started is to quit talking and begin doing.<br><br> -Walt Disney</div>
+        <div class="timeline">
+        <ul>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="history-block bg-86">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">Your time is limited, so don't waste it living someone else's life.<br><br>-Steve Jobs</div>
+        <div class="timeline">
+        <ul>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="history-block bg-96">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">If life were predictable it would cease to be life, and be without flavor.<br><br> -Eleanor Roosevelt</div>
+        <div class="timeline">
+        <ul>
+            <li><a href="" class="timelineYear">1996</a></li>
+            <li><a href="" class="timelineYear">1997</a></li>
+            <li><a href="" class="timelineYear">1998</a></li>
+            <li><a href="" class="timelineYear">1999</a></li>
+            <li><a href="" class="timelineYear">2000</a></li>
+            <li><a href="" class="timelineYear">2001</a></li>
+            <li><a href="" class="timelineYear">2002</a></li>
+            <li><a href="" class="timelineYear">2003</a></li>
+            <li><a href="" class="timelineYear">2004</a></li>
+            <li><a href="" class="timelineYear">2005</a></li>
+            <li><a href="" class="timelineYear">2006</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="history-block bg-06">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough.<br><br> -Oprah Winfrey
+
+        </div>
+        <div class="timeline">
+        <ul>
+            <li><a href="" class="timelineYear">2006</a></li>
+            <li><a href="" class="timelineYear">2007</a></li>
+            <li><a href="" class="timelineYear">2008</a></li>
+            <li><a href="" class="timelineYear">2009</a></li>
+            <li><a href="" class="timelineYear">2010</a></li>
+            <li><a href="" class="timelineYear">2011</a></li>
+            <li><a href="" class="timelineYear">2012</a></li>
+            <li><a href="" class="timelineYear">2013</a></li>
+            <li><a href="" class="timelineYear">2014</a></li>
+            <li><a href="" class="timelineYear">2015</a></li>
+            <li><a href="" class="timelineYear">2016</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="history-block bg-16">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.<br><br> -James Cameron</div>
+        <div class="timeline">
+        </div>
+      </div>
+      <div class="history-block bg-66">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">You have brains in your head. You have feet in your shoes. You can steer yourself any direction you choose.<br><br> -Dr. Seuss</div>
+        <div class="timeline">
+          <ul>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="history-block bg-21">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">Keep smiling, because life is a beautiful thing and there's so much to smile about.<br><br> -Marilyn Monroe</div>
+        <div class="timeline">
+          <ul>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="history-block bg-22">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">"Life is never fair, and perhaps it is a good thing for most of us that it is not."<br><br> -Oscar Wilde</div>
+        <div class="timeline">
+          <ul>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="history-block bg-23">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">Do not go where the path may lead, go instead where there is no path and leave a trail.<br><br> -Ralph Waldo Emerson</div>
+        <div class="timeline">
+          <ul>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="history-block bg-24">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">It is during our darkest moments that we must focus to see the light.<br><br> -Aristotle</div>
+        <div class="timeline">
+          <ul>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="history-block bg-25">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">The best and most beautiful things in the world cannot be seen or even touched — they must be felt with the heart.<br><br> -Helen Keller</div>
+        <div class="timeline">
+          <ul>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="history-block bg-26">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">The greatest glory in living lies not in never falling, but in rising every time we fall.<br><br> -Nelson Mandela</div>
+        <div class="timeline">
+          <ul>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="history-block bg-27">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">When you reach the end of your rope, tie a knot in it and hang on.<br><br> -Franklin D. Roosevelt</div>
+        <div class="timeline">
+          <ul>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="history-block bg-28">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">Don't judge each day by the harvest you reap but by the seeds that you plant.<br><br> -Robert Louis Stevenson</div>
+        <div class="timeline">
+          <ul>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="history-block bg-29">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">The future belongs to those who believe in the beauty of their dreams.<br><br> -Eleanor Roosevelt</div>
+        <div class="timeline">
+          <ul>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="history-block bg-30">
+        <div class="cover"></div>
+        <div class="year"></div>
+        <div class="title">Tell me and I forget. Teach me and I remember. Involve me and I learn.<br><br> -Benjamin Franklin</div>
+        <div class="timeline">
+          <ul>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+            <li><a href="" class="timelineYear"></a></li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!--footer-->
+    <div class="footer">
+      <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a>Account</a></li>
+          <li><a>About</a></li>
+          <!-- <li><a>Contact</a></li> -->
+      </ul>
+
+      <div class="copyright">
+          <p>Copyright 2022 - BEYOND THE REELS (ALL RIGHTS RESERVED)</p>
+      </div>
+  </div>
+
+  </body>
+</html>
+  </body>
+</html>
